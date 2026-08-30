@@ -1,65 +1,37 @@
-<div align="center">
+# STORM YANDEX MUSIC DOWNLOADER
 
-<img src="logo.png" width="128" height="128" alt="STORM YANDEX MUSIC DOWNLOADER Logo" />
+## **О проекте**
+STORM YANDEX MUSIC DOWNLOADER — инструмент для пакетной загрузки аудиотреков, альбомов, плейлистов, подкастов и дискографий исполнителей с сервиса Яндекс Музыка в максимальном доступном качестве (FLAC Lossless, MP3 320 kbps) с автоматическим сохранением всех метаданных, текстов песен (LRC) и обложек высокого разрешения.
 
-# ⚡ STORM YANDEX MUSIC DOWNLOADER
+## **Происхождение и форки**
+Оригинальная разработка ReiKatari на базе открытого протокола Yandex Music API.
 
-<p align="center">
-  <b>Скоростной загрузчик треков, альбомов и плейлистов из Яндекс Музыки в оригинальном качестве с обложками.</b>
-</p>
+## **Технологический стек**
+- **Языки программирования**: TypeScript, JavaScript (Node.js)
+- **Интерфейс**: React, Tailwind CSS, Electron, Vite
+- **Аудио и сетевой стек**: Yandex Music API Client, Axios, ID3 / FLAC Tag Writer, FFmpeg integration
 
-[![Version](https://img.shields.io/badge/version-1.0.0-00D2FF.svg?style=for-the-badge)](https://github.com/ReiKatari/STORM_YANDEX_MUSIC_DOWNLOADER)
-[![Platform](https://img.shields.io/badge/Platform-Windows%2011%20%7C%2010-0EA5E9.svg?style=for-the-badge)](https://github.com/ReiKatari/STORM_YANDEX_MUSIC_DOWNLOADER)
-[![Publisher](https://img.shields.io/badge/Publisher-STORM%20TEAM-10B981.svg?style=for-the-badge)](https://github.com/ReiKatari)
-[![Developer](https://img.shields.io/badge/Author-ReiKatari-F59E0B.svg?style=for-the-badge)](https://github.com/ReiKatari)
-[![Signed](https://img.shields.io/badge/Security-SHA256%20Signed-10B981.svg?style=for-the-badge)](https://github.com/ReiKatari)
+## **Ключевые возможности**
+- **Загрузка в Lossless FLAC и MP3 320 kbps**: Скачивание треков в оригинальном качестве без повторного пережатия.
+- **Полная интеграция метаданных**: Автоматическая запись тегов: название, артист, альбом, номер трека, год, жанр, обложка альбома 1000x1000 и текст песни (LRC).
+- **Загрузка плейлистов и дискографий**: Скачивание плейлистов пользователя («Мне нравится», «Плейлист дня») и полных дискографий одним кликом.
+- **Многопоточность и докачка**: Параллельная загрузка нескольких треков одновременно с поддержкой автоматической докачки при обрыве связи.
 
-</div>
+## **Поддерживаемые платформы и эмуляторы**
+- **Операционные системы**: Windows 10, Windows 11 (x64, ARM64)
 
----
+## **Установка и запуск**
+1. Перейдите в раздел **Releases** на GitHub.
+2. Скачайте инсталлятор или Portable-версию.
+3. Запустите программу, авторизуйтесь через токен Яндекс Музыки и начните загрузку.
 
-## 🌟 О проекте / Overview
+## **Безопасность и цифровые подписи**
+Исполняемые файлы подписаны доверенным цифровым сертификатом **CN=STORM SOFT, O=STORM EDEN** (SHA-256 Authenticode). Авторизационные токены хранятся исключительно локально в зашифрованном хранилище Windows Credential Vault.
 
-**STORM YANDEX MUSIC DOWNLOADER** — компонент программного комплекса **STORM**, разработанный с упором на максимальную производительность, современный дизайн и надёжность.
+## **Авторы и лицензия**
+- **Автор проекта**: ReiKatari
+- **Лицензия**: MIT License
 
-* **Версия:** $ver
-* **Издатель:** STORM TEAM
-* **Ведущий разработчик:** ReiKatari
-* **Технологический стек:** $tech
-
----
-
-## 🚀 Установка / Installation
-
-Установка производится через единый инсталлятор **STORM INSTALLER**:
-
-1. Запустите файл STORM_STORM_YANDEX_MUSIC_DOWNLOADER_1.0.0_Setup.exe.
-2. Выберите режим:
-   * **Стандартная установка** — установка в C:\Program Files\STORM YANDEX MUSIC DOWNLOADER с созданием ярлыков и регистрацией в системе.
-   * **Портативная версия** — распаковка в любую выбранную папку без изменения реестра.
-3. Опция автоматической регистрации доверенного сертификата STORM TEAM исключает предупреждения SmartScreen и Smart App Control.
-
----
-
-## 🛡️ Безопасность и Цифровая подпись / Code Signing
-
-Все исполняемые файлы и инсталляторы подписаны сертификатом **STORM TEAM** с использованием хэширования SHA-256 и RFC 3161 Timestamping.
-
-* Для ручной установки сертификата в хранилище доверенных корневых центров запустите:
-  Files\Разблокировать_И_Установить_Сертификат.bat от имени Администратора.
-
----
-
-## 📁 Структура репозитория / Structure
-
-* Assembling/ — скомпилированные релизные бинарные файлы и зависимости программы.
-* Files/ — инсталлятор, сертификат STORM_Certificate.cer и сервисные скрипты.
-* Sources/ — исходный код решения.
-
----
-
-## 👥 Авторы и Лицензия / Credits
-
-* **Разработчик:** [ReiKatari](https://github.com/ReiKatari)
-* **Издатель:** **STORM TEAM**
-* © 2026 STORM TEAM. Все права защищены.
+## **Благодарности**
+- **Команда разработчиков открытых библиотек yandex-music-api** — за реверс-инжиниринг и документацию протоколов API.
+- **Команда FFmpeg** — за мультимедийные инструменты обработки контейнеров.
