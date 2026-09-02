@@ -46,4 +46,5 @@ google-credentials.json
 installer/Output/
 *.tmp*
 *.wal
-
+*.exe
+test*
